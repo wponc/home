@@ -42,19 +42,19 @@ function Group() {
     <group ref={group}>
       <mesh position={[-1.01, 0, 0]}>
         <boxGeometry />
-        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={.8} />
+        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={1.1} />
       </mesh>
       <mesh position={[1.01, 0, 0]}>
         <boxGeometry />
-        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={.8} />
+        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={1.1} />
       </mesh>
       <mesh position={[0, 1.01, 0]}>
         <boxGeometry />
-        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={.8} />
+        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={1.1} />
       </mesh>
       <mesh position={[0, -1.01, 0]}>
         <boxGeometry />
-        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={.8} />
+        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={1.1} />
       </mesh>
       <mesh position={[0, 0, 0]}>
         <boxGeometry />
