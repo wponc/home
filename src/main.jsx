@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles.css'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Environment, MeshTransmissionMaterial, PerformanceMonitor } from '@react-three/drei'
+import { OrbitControls, Instances, Instance, Environment, MeshTransmissionMaterial, PerformanceMonitor } from '@react-three/drei'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -12,11 +12,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 )
 
 function App() {
-  const [dpr, setDpr] = useState(2)
+  // const [dpr, setDpr] = useState(2)
   return (
     <>
       <Canvas>
-        <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} />
+        {/* <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} /> */}
         <Environment 
           files='https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/hdris/fireplace/fireplace_1k.hdr'
           blur={0.9} 
@@ -27,6 +27,17 @@ function App() {
         <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
         <Group />
       </Canvas>
+    </>
+  )
+}
+
+function boxInstances() {
+  return(
+    <>
+      <mesh>
+        <boxGeometry />
+        <meshPhysicalMaterial />
+      </mesh>
     </>
   )
 }
@@ -58,8 +69,8 @@ function Group() {
       </mesh>
       <mesh position={[0, 0, 0]}>
         <boxGeometry />
-        <meshPhysicalMaterial metalness={0.9} roughnes={0.5} color='#120329' iridescence={1} />
-      </mesh>
+        <meshPhysicalMaterial metalness={0.9} roughnes={0.5} color='#C0C0C0' iridescence={1} />
+      </mesh> 
      </group>
      </>
    )
