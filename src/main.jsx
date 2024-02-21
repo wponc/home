@@ -1,8 +1,10 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef, useState, useLayoutEffect } from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles.css'
 import { Canvas, useFrame } from '@react-three/fiber'
-import { OrbitControls, Instances, Instance, Environment, MeshTransmissionMaterial, PerformanceMonitor } from '@react-three/drei'
+import { OrbitControls, Environment, MeshTransmissionMaterial, Stage, Backdrop } from '@react-three/drei'
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -13,68 +15,45 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 
 function App() {
   // const [dpr, setDpr] = useState(2)
+  const cameraDist = 2
   return (
     <>
-      <Canvas>
-        {/* <PerformanceMonitor onIncline={() => setDpr(2)} onDecline={() => setDpr(1)} /> */}
+      <Canvas
+        camera={{
+          position: [0, cameraDist, cameraDist]
+        }}
+        shadows
+      >
+        {/* <EffectComposer disableNormalPass>
+          <Bloom mipmapBlur luminanceThreshold={1} intensity={2} />
+        </EffectComposer> */}
         <Environment 
           files='https://vazxmixjsiawhamofees.supabase.co/storage/v1/object/public/hdris/fireplace/fireplace_1k.hdr'
+          background
           blur={0.9} 
         />
-        <color args={['#e5e6df']} attach='background' />
+        <OrbitControls />
+        {/* <color args={['#e5e6df']} attach='background' /> */}
         <ambientLight intensity={Math.PI / 2} />
-        <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} />
-        <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} />
-        <Group />
+        {/* <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} decay={0} intensity={Math.PI} /> */}
+        {/* <pointLight position={[-10, -10, -10]} decay={0} intensity={Math.PI} /> */}
+        <directionalLight position={[0, 2, 4]} />
+        <Stage shadows="accumulative" adjustCamera={cameraDist} >
+          <mesh castShadow position-x={-.75}>
+            <boxGeometry />
+            <meshPhysicalMaterial metalness={0.9} roughnes={0.2} color='#C0C0C0' iridescence={1} />
+          </mesh> 
+          <mesh castShadow position-x={.75}>
+            <boxGeometry />
+            <MeshTransmissionMaterial color='#e5e6df' thickness={1} roughness={0.3} chromaticAberration={1.1} />
+          </mesh> 
+        </Stage>
+  
       </Canvas>
     </>
   )
 }
 
-function boxInstances() {
-  return(
-    <>
-      <mesh>
-        <boxGeometry />
-        <meshPhysicalMaterial />
-      </mesh>
-    </>
-  )
-}
-
-function Group() {
-  useFrame(() => {
-    group.current.rotation.y += .003 
-    group.current.rotation.x += .003 
-  })
-  const group = useRef()
-  return (
-    <>
-    <group ref={group}>
-      <mesh position={[-1.01, 0, 0]}>
-        <boxGeometry />
-        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={1.1} />
-      </mesh>
-      <mesh position={[1.01, 0, 0]}>
-        <boxGeometry />
-        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={1.1} />
-      </mesh>
-      <mesh position={[0, 1.01, 0]}>
-        <boxGeometry />
-        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={1.1} />
-      </mesh>
-      <mesh position={[0, -1.01, 0]}>
-        <boxGeometry />
-        <MeshTransmissionMaterial color='#ffffff' thickness={1} roughness={0.3} chromaticAberration={1.1} />
-      </mesh>
-      <mesh position={[0, 0, 0]}>
-        <boxGeometry />
-        <meshPhysicalMaterial metalness={0.9} roughnes={0.5} color='#C0C0C0' iridescence={1} />
-      </mesh> 
-     </group>
-     </>
-   )
- }
 
 function Overlay(){
   return(
