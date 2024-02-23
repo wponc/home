@@ -1,6 +1,6 @@
 :root {
-  --primary-color: rgb(255, 255, 255);
-  --accent-color: rgb(0, 0, 0);
+  --primary-color: rgb(0, 0, 0);
+  --accent-color: rgb(172, 172, 172);
   --navbar-size: 18pt;
   --icon-size: 3vw;
 }
@@ -19,7 +19,9 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  background: rgb(0, 0, 0);
+  /* background: rgb(0, 0, 0); */
+  /* background: goldenrod; */
+
 }
 
 nav {
