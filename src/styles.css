@@ -1,5 +1,5 @@
 :root {
-  --primary-color: rgb(0, 0, 0);
+  --primary-color: rgb(255, 255, 255);
   --accent-color: rgb(172, 172, 172);
   --navbar-size: 18pt;
   --icon-size: 3vw;
@@ -11,6 +11,7 @@
   padding: 0;
   font-family: "Raleway", sans-serif;
   /* text-shadow: 1px 1px 1px rgb (92, 91, 91); */
+  user-select: none;
 
 }
 
@@ -19,22 +20,23 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  /* background: rgb(0, 0, 0); */
+  /* background: rgb(235, 230, 230); */
   /* background: goldenrod; */
 
 }
 
 nav {
   width: 100%;
-  padding: 5vh 5vw 0% 5vw;
+  padding: 5vh 5vw 5vw;
   display: flex; 
-  align-items: center; 
+  justify-content: center;
+  align-items: center;
   position: absolute;
   z-index: 99;
 }
 
 #menu-button {
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
 }
 .dropdown-content {
   display: none;
@@ -51,12 +53,14 @@ nav {
 }
 
 .material-symbols-outlined {
+  font-size: 30px;
   font-variation-settings:
   'FILL' 0,
-  'wght' 300,
-  'GRAD' -25,
+  'wght' 400,
+  'GRAD' 0,
   'opsz' 48
 }
+
 
 ul {
   list-style-type: none;
@@ -74,9 +78,19 @@ a {
   padding: 5px;
   color: var(--primary-color);
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 0.2s ease;
 }
 
 a:hover {
   color: var(--accent-color);
+}
+.content{
+  position: absolute;
+  display:flex;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  /* background-color: #fff; */
+  justify-content: center;
+  align-items: center;
 }
