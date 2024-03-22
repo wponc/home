@@ -24,7 +24,7 @@ function App() {
         <planeGeometry args={[5, 3]}/>
         <MeshTransmissionMaterial chromaticAberration={.4} thickness={2} color={'white'}/>
         <Edges
-          linewidth={4}
+          linewidth={8}
           scale={1.05}
           threshold={15} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
           color="white"
