@@ -2,7 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './styles.css'
 import { Canvas } from '@react-three/fiber'
-import { OrbitControls, Cloud, MeshTransmissionMaterial, Text, Center, Edges } from '@react-three/drei'
+import { OrbitControls, Cloud, MeshTransmissionMaterial, Text, Outlines, Edges } from '@react-three/drei'
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
@@ -15,23 +16,25 @@ function App() {
   return (
     <>
     <Canvas>
+
+
       <color attach="background" args={["black"]} />
       <ambientLight />
-      <Text fontSize={0.3} position={[0, 0, 1.9]}>
+      <Text fontSize={0.3} position={[0, 0, 1.9]} >
         welcome
       </Text>
       <mesh  position={[0, 0, 2]}>  
         <planeGeometry args={[5, 3]}/>
-        <MeshTransmissionMaterial chromaticAberration={.4} thickness={2} color={'white'}/>
+        <MeshTransmissionMaterial chromaticAberration={.3} thickness={2} color={'white'}/>
         <Edges
-          linewidth={8}
-          scale={1.05}
+          linewidth={16}
+          scale={1.1}
           threshold={15} // Display edges only when the angle between two faces exceeds this value (default=15 degrees)
           color="white"
         />
       </mesh>
       {/* </Bounds>    */}
-      <Cloud segments={5} speed={0.1} color={'darkorange'} bounds={[6, 3, 1]}/>
+      <Cloud segments={5} speed={0.1} color={'white'} bounds={[6, 3, 1]}/>
     </Canvas>
     </>
   )
