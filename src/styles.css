@@ -20,9 +20,6 @@ body,
 #root {
   width: 100%;
   height: 100%;
-  /* background: rgb(235, 230, 230); */
-  /* background: goldenrod; */
-
 }
 
 nav {
@@ -84,13 +81,4 @@ a {
 a:hover {
   color: var(--accent-color);
 }
-.content{
-  position: absolute;
-  display:flex;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-  /* background-color: #fff; */
-  justify-content: center;
-  align-items: center;
-}
+

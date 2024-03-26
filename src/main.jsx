@@ -28,7 +28,7 @@ function App() {
           <MeshTransmissionMaterial chromaticAberration={.3} thickness={2} color={'white'}/>
         </mesh>
       </Bounds>   
-      <Cloud segments={5} speed={0.1} color={'white'} bounds={[6, 3, 1]}/>
+      <Cloud segments={10} speed={0.1} color={'white'} bounds={[6, 3, 5]}/>
     </Canvas>
     </>
   )
